@@ -119,7 +119,7 @@ unclutter -idle 0.5 &
 eval "\$(dbus-launch --sh-syntax)" >/dev/null
 
 openbox-session &
-sleep 1
+sleep 5
 
 ${CHROME_BIN} \\
   --kiosk \\

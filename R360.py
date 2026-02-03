@@ -35,7 +35,7 @@ USERNAME = cfg["USERNAME"]
 PASSWORD = cfg["PASSWORD"]
 AGENCY = cfg.get("AGENCY", "springfd")
 UNIT = cfg.get("UNIT", "")
-BoardID = cfg.get("BOARDID", "Admin")
+BoardID = cfg.get("BOARD_ID", "Admin")
 KEEP_LOGGED_IN = cfg.get("KEEP_LOGGED_IN", "1") in ("1", "true", "True", "yes", "YES")
 
 def is_still_on_login(page) -> bool:
