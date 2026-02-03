@@ -85,7 +85,7 @@ KEEP_LOGGED_IN=1
 EOF
 
   chmod 0600 "${CREDS_FILE}"
-  chown root:${CAD_USER} "${CREDS_FILE}"
+  chown root:${CADuser} "${CREDS_FILE}"
 fi
 
 # Allow CAD user to read creds (optional).
