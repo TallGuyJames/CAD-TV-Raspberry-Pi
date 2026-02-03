@@ -3,7 +3,7 @@ set -euo pipefail
 
 CADuser="cadtv"
 CAD_HOME="/home/${CADuser}"
-R360_RAW_URL="https://raw.githubusercontent.com/ORG/REPO/${R360_BRANCH}/${R360_REPO_PATH}"
+R360_RAW_URL="https://raw.githubusercontent.com/TallGuyJames/CAD-TV-Raspberry-Pi/refs/heads/main/R360.py"
 
 APP_URL="https://overwatch.responder360.com/"
 CDP_PORT="9222"
