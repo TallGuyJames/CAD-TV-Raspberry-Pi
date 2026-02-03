@@ -43,8 +43,15 @@ def is_still_on_login(page) -> bool:
 
 with sync_playwright() as p:
     browser = p.chromium.connect_over_cdp(CDP_URL)
-    context = browser.contexts[0] if browser.contexts else browser.new_context()
-    page = context.pages[0] if context.pages else context.new_page()
+
+    # Close any existing contexts to guarantee clean state
+    for ctx in browser.contexts:
+        ctx.close()
+
+    # Create a fresh context (clears cache, cookies, storage)
+    context = browser.new_context()
+    page = context.new_page()
+
 
     page.goto(URL, wait_until="domcontentloaded")
     page.wait_for_selector('input[name="username"]', timeout=30000)
