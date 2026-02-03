@@ -21,7 +21,7 @@ GETTY_DROPIN_FILE="${GETTY_DROPIN_DIR}/autologin.conf"
 # ---------- packages ----------
 apt update
 apt install -y \
-  xserver-xorg curl x11-xserver-utils xinit openbox chromium-browser unclutter dbus-x11 python3-venv python3-full python3-pip python3-xdg
+  xserver-xorg curl x11-xserver-utils xinit openbox chromium unclutter dbus-x11 python3-venv python3-full python3-pip python3-xdg
 
 # Some distros use "chromium" not "chromium-browser"
 if ! command -v chromium-browser >/dev/null 2>&1; then
@@ -82,7 +82,7 @@ KEEP_LOGGED_IN=1
 EOF
 
   chmod 0600 "${CREDS_FILE}"
-  chown root:${KIOSK_USER} "${CREDS_FILE}"
+  chown root:${CAD_USER} "${CREDS_FILE}"
 fi
 
 # Allow CAD user to read creds (optional).
