@@ -18,6 +18,9 @@ BASH_PROFILE_DST="${CAD_HOME}/.bash_profile"
 GETTY_DROPIN_DIR="/etc/systemd/system/getty@tty1.service.d"
 GETTY_DROPIN_FILE="${GETTY_DROPIN_DIR}/autologin.conf"
 
+XORG_CONF_DIR="/etc/X11/xorg.conf.d"
+XORG_CONF_FILE="${XORG_CONF_DIR}/20-kms.conf"
+
 # ---------- packages ----------
 apt update
 apt install -y \
@@ -146,6 +149,20 @@ EOF
 
 chown "${CADuser}:${CADuser}" "${XINITRC_DST}"
 chmod 0755 "${XINITRC_DST}"
+
+# ---------- xorg.conf ----------
+sudo mkdir -p "${XORG_CONF_DIR}"
+
+sudo tee "${XORG_CONF_FILE}" > /dev/null <<'EOF'
+Section "Device"
+    Identifier  "KMS"
+    Driver      "modesetting"
+    Option      "kmsdev" "/dev/dri/card1"
+    Option      "PrimaryGPU" "true"
+EndSection
+EOF
+
+sudo chmod 0644 "${XORG_CONF_FILE}"
 
 # ---------- R360.py placeholder ----------
 curl -fsSL "${R360_RAW_URL}" -o "${R360_PY_DST}"
